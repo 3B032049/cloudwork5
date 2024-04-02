@@ -19,11 +19,11 @@ def hello():
 
 @app.route('/user/<name>')
 def user(name):
-    return f'<h1>Hello,{name}!</h1>'
+    return f'<h1>Hello, {name}!</h1>'
 
 @app.route('/user/<name>/<surname>')
 def user_surname(name,surname):
-    return f'<h1>Hello,{name}{surname}<!/h1>'
+    return f'<h1>Hello, {name} {surname}!</h1>'
 
 if __name__ == '__main__':
     app.run()
