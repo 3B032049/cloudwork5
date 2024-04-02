@@ -14,7 +14,7 @@ def index():
     return '<h1>Hello World!</h1>'
 
 @app.route('/hello')
-def hello()
+def hello():
     return '<h1>Hello Flask</h1>'
 
 if __name__ == '__main__':
