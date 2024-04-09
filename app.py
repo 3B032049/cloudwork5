@@ -7,7 +7,7 @@ Created on Tue Mar 26 15:04:03 2024
 
 from flask import Flask, render_template
 
-app = Flask(__name__, template_folder='templates/')
+app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def index():
