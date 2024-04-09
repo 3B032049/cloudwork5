@@ -6,9 +6,14 @@
         {% block head %}
         <title>{% block title %} {% endblock %}</title>
         {% endblock %}
+        <link href="{{ url_for('static', filename='css/boostrap.min.css') }}" rel="stylesheet">
     </head>
     <body>
         {% block body %}
         {% endblock %}
+
+        <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/popper-2.11.8.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/boostrap.min.js') }}"></script>
     </body>
 </html>
