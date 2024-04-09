@@ -5,13 +5,13 @@ Created on Tue Mar 26 15:04:03 2024
 @author: user
 """
 
-from flask import Flask
+from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def index():
-    return '<h1>Hello World!</h1>'
+    return render_template('index.html')
 
 @app.route('/hello')
 def hello():
@@ -19,7 +19,7 @@ def hello():
 
 @app.route('/user/<name>')
 def user(name):
-    return f'<h1>Hello, {name}!</h1>'
+    return render_template('user.html', name=name)
 
 @app.route('/user/<name>/<surname>')
 def user_surname(name,surname):
