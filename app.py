@@ -9,7 +9,7 @@ from flask import Flask, render_template ,request
 
 app = Flask(__name__, template_folder='templates',
             static_url_path='/static', static_folder='static')
-
+name=''
 @app.route('/')
 @app.route('/index',methods=['GET'])
 def index():
@@ -31,6 +31,27 @@ def welfare():
 @app.route('/user/<name>')
 def user(name):
     return render_template('user.html', name=name)
+
+@app.route('/user/<username>')
+def user(username):
+    global name
+    name = username
+    return render_template('user.html', name=username)
+
+@app.route('/search', methods=['POST'])
+def search():
+    global name
+    username = name
+    keyword = request.values['keyword']
+    if keyword == '紅燈':
+        message = '紅燈停!'
+    elif keyword == '黃燈':
+        message = '加速通過馬路或停下等候綠燈!'
+    elif keyword == '綠燈':
+    else:
+        message = '綠燈行!'
+        message = '請重新輸入!'
+    return render_template('user.html', name=username, message=message)
 
 @app.route('/user/<name>/<surname>')
 def user_surname(name,surname):
