@@ -9,7 +9,7 @@ from flask import Flask, render_template ,request
 
 app = Flask(__name__, template_folder='templates',
             static_url_path='/static', static_folder='static')
-name=''
+name = ''
 @app.route('/')
 @app.route('/index',methods=['GET'])
 def index():
@@ -48,8 +48,8 @@ def search():
     elif keyword == '黃燈':
         message = '加速通過馬路或停下等候綠燈!'
     elif keyword == '綠燈':
+            message = '綠燈行!'
     else:
-        message = '綠燈行!'
         message = '請重新輸入!'
     return render_template('user.html', name=username, message=message)
 
