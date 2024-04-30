@@ -42,7 +42,7 @@ def user(username):
 def search():
     global name
     username = name
-    if request.methods =='POST'
+    if request.methods =='POST':
         keyword = request.values['keyword']
         if keyword == '紅燈':
             message = '紅燈停!'
