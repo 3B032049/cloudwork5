@@ -19,12 +19,12 @@ def shopping():
     return render_template('shopping.html')
 
 @app.route('/ticket')
-def ticket_saling():
-    return render_template('ticket_saling.html')
+def ticket():
+    return render_template('ticket.html')
 
 @app.route('/welfare')
-def welfare_platform():
-    return render_template('welfare_platform.html')
+def welfare():
+    return render_template('welfare.html')
 
 @app.route('/user/<name>')
 def user(name):
