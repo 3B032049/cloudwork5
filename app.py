@@ -43,7 +43,7 @@ def login():
         username = request.form['username']
         userpassword = request.form['userpassword']
         message = '登入成功!'
-    return redirect(url_for('user', username=username, message=message))
+        return redirect(url_for('user', username=username, message=message))
     else:
         render_template("member/signin.html")
 
