@@ -29,7 +29,7 @@ def ticket():
 def welfare():
     return render_template('welfare.html')
 
-@app.route('/user/<username>', methods="GET")
+@app.route('/user/<username>', methods=["GET"])
 def user(username):
     message= request.args.get("message")
     return render_template('user.html', name=name)
