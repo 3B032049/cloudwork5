@@ -45,7 +45,7 @@ def login():
         message = '登入成功!'
     return redirect(url_for('user', username=username, message=message))
     else:
-        render_template("signin.html")
+        render_template("member/signin.html")
 
 '''@app.route('/user/<username>')
 def user(username):
