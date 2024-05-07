@@ -6,6 +6,7 @@ Created on Tue Mar 26 15:04:03 2024
 """
 
 from flask import Flask, render_template ,request
+from flask import redirect, url_for
 
 app = Flask(__name__, template_folder='templates',
             static_url_path='/static', static_folder='static')
@@ -28,15 +29,29 @@ def ticket():
 def welfare():
     return render_template('welfare.html')
 
-'''@app.route('/user/<name>')
-def user(name):
-    return render_template('user.html', name=name)'''
+@app.route('/user/<username>', methods="GET")
+def user(username):
+    message= request.args.get("message")
+    return render_template('user.html', name=name)
 
-@app.route('/user/<username>')
+@app.route('/member/signin')
+def signin():
+    return render_template('member/signin.html')
+@app.route('/member/login', methods=["POST"])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        userpassword = request.form['userpassword']
+        message = '登入成功!'
+    return redirect(url_for('user', username=username, message=message))
+    else:
+        render_template("signin.html")
+
+'''@app.route('/user/<username>')
 def user(username):
     global name
     name = username
-    return render_template('user.html', name=username)
+    return render_template('user.html', name=username)'''
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
