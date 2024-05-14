@@ -51,7 +51,7 @@ def user(username):
 
 @app.route('/user')
 def user():
-     if 'username' in session:
+    if 'username' in session:
         username = session['username']
         return render_template('user.html', name=username)
     else:
