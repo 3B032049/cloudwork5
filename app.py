@@ -7,6 +7,7 @@ Created on Tue Mar 26 15:04:03 2024
 
 from flask import Flask, render_template ,request
 from flask import redirect, url_for, session
+from database import timedelta
 import hashlib
 import psycopg2
 import dbconn
@@ -14,7 +15,7 @@ import dbconn
 app = Flask(__name__, template_folder='templates',
             static_url_path='/static', static_folder='static')
 app.secret_key = 'fd4723e200261a2271ea912571eaaald'
-
+app.permanent_session_lifetime = timedelta(minutes=3)
 name = ''
 
 # DB Connection
@@ -85,12 +86,14 @@ def login():
         cursor.close()
         conn.close()
         if (username == user [0] and hashpass == user[1]):
+            session.parmanent = True
             session['username'] = username
             return redirect(url_for('user'))
-        else:
-            return render_template("member/signin.html")
     else:
-        return render_template("member/signin.html")
+        if 'username' in session:
+            return redirect(url_for('user')
+
+        render_template("member/signin.html")
 
 '''@app.route('/user/<username>')
 def user(username):
