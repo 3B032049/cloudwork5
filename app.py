@@ -70,7 +70,7 @@ def login():
         return redirect(url_for('user', username=username, message=message))
     else:
         render_template("member/signin.html")'''
-@app.route('/member/login', methods=["GET","POST"])
+'''@app.route('/member/login', methods=["GET","POST"])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -95,8 +95,32 @@ def login():
         if 'username' in session:
             return redirect(url_for('user'))
 
+        return render_template("member/signin.html")'''
+@app.route('/member/login', methods=["GET","POST"])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        userpass = request.form['userpassword']
+        md = hashlib.md5()
+        md.update(userpass.encode('utf-8'))
+        hashpass = md.hexdigest()
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        SQL = f"SELECT username, userpass FROM account WHERE username='{username}';"
+        cursor.execute(SQL)
+        user = cursor.fetchone()
+        cursor.close()
+        conn.close()
+        if user and hashpass == user[1]:
+            session.permanent = True
+            session['username'] = username
+            return redirect(url_for('user'))
+        else:
+            return render_template("member/signin.html")
+    else:
+        if 'username' in session:
+            return redirect(url_for('user'))
         return render_template("member/signin.html")
-
 '''@app.route('/user/<username>')
 def user(username):
     global name
