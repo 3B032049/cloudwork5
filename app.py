@@ -70,7 +70,7 @@ def login():
         return redirect(url_for('user', username=username, message=message))
     else:
         render_template("member/signin.html")'''
-@app.route('/member/login', methods=["POST"])
+@app.route('/member/login', methods=["GET","POST"])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -89,11 +89,13 @@ def login():
             session.parmanent = True
             session['username'] = username
             return redirect(url_for('user'))
+        else:
+            return redirect(url_for('signin'))
     else:
         if 'username' in session:
             return redirect(url_for('user'))
 
-        render_template("member/signin.html")
+        return render_template("member/signin.html")
 
 '''@app.route('/user/<username>')
 def user(username):
