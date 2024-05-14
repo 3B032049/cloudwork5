@@ -79,7 +79,7 @@ def login():
         hashpass = md.hexdigest()
         conn = get_db_connection()
         cursor = conn.cursor()
-        SQL = "SELECT username, userpass FROM account WHERE username='{username}';"
+        SQL = f"SELECT username, userpass FROM account WHERE username='{username}';"
         cursor.execute (SQL)
         user = cursor.fetchone()
         cursor.close()
