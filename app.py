@@ -70,7 +70,7 @@ def login():
         return redirect(url_for('user', username=username, message=message))
     else:
         render_template("member/signin.html")'''
-'''@app.route('/member/login', methods=["GET","POST"])
+@app.route('/member/login', methods=["GET","POST"])
 def login():
     if request.method == 'POST':
         username = request.form['username']
@@ -90,44 +90,11 @@ def login():
             session['username'] = username
             return redirect(url_for('user'))
         else:
-            flash('Invalid username or password', 'error')
             return redirect(url_for('signin'))
     else:
         if 'username' in session:
             return redirect(url_for('user'))
 
-        return render_template("member/signin.html")'''
-
-@app.route('/member/login', methods=["GET","POST"])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        userpass = request.form['userpassword']
-        md = hashlib.md5()
-        md.update(userpass.encode('utf-8'))
-        hashpass = md.hexdigest()
-
-        conn = get_db_connection()
-        cursor = conn.cursor()
-
-        # 使用参数化查询来防止 SQL 注入
-        SQL = "SELECT username, userpass FROM account WHERE username=?;"
-        cursor.execute(SQL, (username,))
-
-        user = cursor.fetchone()
-        cursor.close()
-        conn.close()
-
-        if user and hashpass == user[1]:
-            session.permanent = True
-            session['username'] = username
-            return redirect(url_for('user'))
-        else:
-            flash('无效的用户名或密码', 'error')
-            return redirect(url_for('signin'))
-    else:
-        if 'username' in session:
-            return redirect(url_for('user'))
         return render_template("member/signin.html")
 
 '''@app.route('/user/<username>')
