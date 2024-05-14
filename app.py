@@ -87,6 +87,8 @@ def login():
         if (username == user [0] and hashpass == user[1]):
             session['username'] = username
             return redirect(url_for('user'))
+        else:
+            return render_template("member/signin.html")
     else:
         return render_template("member/signin.html")
 
