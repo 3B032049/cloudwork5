@@ -91,7 +91,7 @@ def login():
             return redirect(url_for('user'))
     else:
         if 'username' in session:
-            return redirect(url_for('user')
+            return redirect(url_for('user'))
 
         render_template("member/signin.html")
 
