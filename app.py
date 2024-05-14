@@ -88,7 +88,7 @@ def login():
             session['username'] = username
             return redirect(url_for('user'))
     else:
-        render_template("member/signin.html")
+        return render_template("member/signin.html")
 
 '''@app.route('/user/<username>')
 def user(username):
