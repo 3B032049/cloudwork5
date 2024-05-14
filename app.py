@@ -90,10 +90,10 @@ def login():
             session['username'] = username
             return redirect(url_for('user'))
         else:
+            flash('Invalid username or password', 'error')
             return redirect(url_for('signin'))
     else:
         if 'username' in session:
-            flash('Invalid username or password', 'error')
             return redirect(url_for('user'))
 
         return render_template("member/signin.html")
