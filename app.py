@@ -85,7 +85,7 @@ def login():
         user = cursor.fetchone()
         cursor.close()
         conn.close()
-        if not user
+        if not user:
             return redirect(url_for('signin'))
 
         if (username == user [0] and hashpass == user[1]):
