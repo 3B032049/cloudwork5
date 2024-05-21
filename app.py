@@ -189,7 +189,7 @@ def join():
             conn.commit()
             cursor.close()
             conn.close()
-            return redirect(url_for('signin'))
+        return redirect(url_for('signin'))
 
 
 
