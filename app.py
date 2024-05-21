@@ -154,7 +154,17 @@ def user(username):
 @app.route('/member/forgot')
 def forgot():
     return 'Pass'
+@app.route('/product')
+def product():
+    return 'Pass'
 
+@app.route('/aboutus')
+def aboutus():
+    return 'Pass'
+@app.route('/contactus')
+def contactus():
+    return 'Pass'
+    
 @app.route('/member/logout')
 def logout():
     session.pop('username', None)
