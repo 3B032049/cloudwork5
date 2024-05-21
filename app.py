@@ -130,6 +130,11 @@ def user(username):
     name = username
     return render_template('user.html', name=username)'''
 
+@app.route('/member/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('signin'))
+
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     '''global name
