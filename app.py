@@ -47,11 +47,13 @@ class RegistrationForm (FlaskForm):
     submit = SubmitField('立即註冊')
 
 
-@app.route('/')
-@app.route('/index',methods=['GET'])
+@app.route('/',methods=['GET'])
+def index():
+    return render_template('index.html')
+'''@app.route('/index',methods=['GET'])
 def index():
     name = request.args.get('name')
-    return render_template('index.html', **locals())
+    return render_template('index.html', **locals())'''
 
 @app.route('/shopping')
 def shopping():
