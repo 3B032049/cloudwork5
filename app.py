@@ -181,10 +181,10 @@ def join():
             count = cursor.fetchone()[0]
             mid = 'm' + str(count + 1).zfill(4)
 
-            SQL2 = f"INSERT INTO member VALUES('{mld}', '{name}', '{birthday}', '{phone}', '{address}', '{email}');"
+            SQL2 = f"INSERT INTO member VALUES('{mid}', '{name}', '{birthday}', '{phone}', '{address}', '{email}');"
             cursor.execute(SQL2)
 
-            SQL3 = f"INSERT INTO account (mid, username, userpass) VALUES ('{mld}', '{username}', '{userpass}');"
+            SQL3 = f"INSERT INTO account (mid, username, userpass) VALUES ('{mid}', '{username}', '{userpass}');"
             cursor.execute(SQL3)
             conn.commit()
             cursor.close()
