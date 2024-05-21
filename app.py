@@ -180,11 +180,14 @@ def join():
             cursor.execute(SQL)
             count = cursor.fetchone()[0]
             mid = 'm' + str(count + 1).zfill(4)
+            md = hashlib.md5()
+            md.update(userpass.encode('utf-8'))
+            hashpass = md.hexdigest()
 
             SQL2 = f"INSERT INTO member VALUES('{mid}', '{name}', '{birthday}', '{phone}', '{address}', '{email}');"
             cursor.execute(SQL2)
 
-            SQL3 = f"INSERT INTO account (mid, username, userpass) VALUES ('{mid}', '{username}', '{userpass}');"
+            SQL3 = f"INSERT INTO account (mid, username, userpass) VALUES ('{mid}', '{username}', '{hashpass}');"
             cursor.execute(SQL3)
             conn.commit()
             cursor.close()
