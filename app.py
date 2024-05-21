@@ -150,7 +150,7 @@ def user(username):
     name = username
     return render_template('user.html', name=username)'''
 @app.route('/member/forgot')
-    def forgot():
+def forgot():
     return 'Pass'
 
 @app.route('/member/logout')
