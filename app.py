@@ -144,7 +144,7 @@ def login():
         user = cursor.fetchone()
         cursor.close()
         conn.close()'''
-        user.Account.query.filter_by(username=username).first()
+        user=Account.query.filter_by(username=username).first()
         if not user:
             return redirect(url_for('signin'))
 
