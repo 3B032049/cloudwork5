@@ -23,6 +23,8 @@ app.permanent_session_lifetime = timedelta(minutes=3)
 app.config['SQLALCHEMY_DATABASE_URI']=f'postgresql://{dbconn.user}:{dbconn.password}@{dbconn.host}/{dbconn.database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 
+db =SQLAlchemy(app)
+
 # DB Connection
 def get_db_connection():
     conn = psycopg2.connect(
@@ -32,7 +34,6 @@ def get_db_connection():
         password=dbconn.password)
     return conn
 
-db =SQLAlchemy(app)
 
 # Member Class
 class Member(db.Model):
