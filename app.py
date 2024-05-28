@@ -85,6 +85,7 @@ class RegistrationForm (FlaskForm):
 
 @app.route('/',methods=['GET'])
 def index():
+    db.create_all()
     return render_template('index.html')
 '''@app.route('/index',methods=['GET'])
 def index():
