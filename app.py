@@ -137,17 +137,20 @@ def login():
         md = hashlib.md5()
         md.update(userpass.encode('utf-8'))
         hashpass = md.hexdigest()
-        conn = get_db_connection()
+        '''conn = get_db_connection()
         cursor = conn.cursor(cursor_factory=psycopg2.extras. RealDictCursor)
         SQL = f"SELECT username, userpass FROM account WHERE username='{username}';"
         cursor.execute (SQL)
         user = cursor.fetchone()
         cursor.close()
-        conn.close()
+        conn.close()'''
+        user.Account.query.filter_by(username=username).first()
         if not user:
             return redirect(url_for('signin'))
 
-        if (username == user ['username'] and hashpass == user['userpass']):
+
+        #if (username == user ['username'] and hashpass == user['userpass']):
+        if (username == user.username and hashpass == user.userpass):
             session.parmanent = True
             session['username'] = username
             return redirect(url_for('user'))
