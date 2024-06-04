@@ -250,7 +250,7 @@ def join():
             md = hashlib.md5()
             md.update(userpass.encode('utf-8'))
             userpass = md.hexdigest()
-            member_user = Member(mid=mid, name=name, birthday birthday, phone=phone, address=address, email=email)
+            member_user = Member(mid=mid, name=name, birthday=birthday, phone=phone, address=address, email=email)
             account_user = Account (username=username, userpass=userpass, mid=mid)
             db.session.add(member_user)
             db.session.add(account_user)
