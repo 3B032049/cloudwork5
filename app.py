@@ -290,6 +290,61 @@ def user_surname(name,surname):
 @app.route('/about')
 def about():
     return '<h1>Hello</h1>'
+
+
+
+
+@app.route('/member/memberprofile')
+def memberprofile():
+    username = session['username']
+    account = Account.query.filter_by(username=username).first()
+    mid account.mid
+    member Member.query.filter_by(mid=mid).first()
+    name member.name
+    birthday member.birthday
+    phone member.phone
+    address member.address
+    email member.email
+    return render_template('member/memberprofile.html', name=name, birthday birthday, phone phone, address=address, email=email)
+@app.route
+@app.route('/member/memberprofile_modification', methods=['POST'])
+def memberprofile_modification():
+    if request.method == 'POST':
+        username = session['username']
+        account = Account.query.filter_by(username=username).first()
+        mid = account.mid
+        member = Member.query.filter_by(mid=mid).first()
+        member.name = request.values['name']
+        member.birthday = request.values['birthday']
+        member.phone = request.values['phone']
+        member.address = request.values['address']
+        member.email = request.values['email']
+        db.session.add(member)
+        db.session.commit()
+    return redirect(url_for('user'))
+
+@app.route('/member/memberpassword')
+def memberpassword():
+    username = session ['username']
+    return render_template('member/memberpassword.html')
+
+@app.route('/member/memberpassword_modification', methods=['POST'])
+def memberpassword_modification():
+    if request.method == 'POST':
+        username = session['username']
+        account = Account.query.filter_by(username=username).first()
+        oldpassword = request.values['oldpassword']
+        newpassword = request.values['newpassword']
+        newpassword2 = request.values['newpassword2']
+        md = hashlib.md5()
+        md.update(newpassword.encode('utf-8'))
+        userpass = md.hexdigest()
+    if (oldpassword != newpassword and newpassword == newpassword2):
+        account.userpass = userpass
+        db.session.add(account)
+        db.session.commit()
+    return redirect(url_for('user'))
+
 if __name__ == '__main__':
     db.create_all()
     app.run()
