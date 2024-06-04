@@ -306,7 +306,7 @@ def memberprofile():
     phone = member.phone
     address = member.address
     email = member.email
-    return render_template('member/memberprofile.html', name=name, birthday birthday, phone phone, address=address, email=email)
+    return render_template('member/memberprofile.html', name=name, birthday=birthday, phone=phone, address=address, email=email)
 @app.route
 @app.route('/member/memberprofile_modification', methods=['POST'])
 def memberprofile_modification():
