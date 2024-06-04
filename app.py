@@ -298,13 +298,14 @@ def about():
 def memberprofile():
     username = session['username']
     account = Account.query.filter_by(username=username).first()
-    mid account.mid
-    member Member.query.filter_by(mid=mid).first()
-    name member.name
-    birthday member.birthday
-    phone member.phone
-    address member.address
-    email member.email
+    mid =account.mid
+
+    member = Member.query.filter_by(mid=mid).first()
+    name = member.name
+    birthday = member.birthday
+    phone = member.phone
+    address = member.address
+    email = member.email
     return render_template('member/memberprofile.html', name=name, birthday birthday, phone phone, address=address, email=email)
 @app.route
 @app.route('/member/memberprofile_modification', methods=['POST'])
