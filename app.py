@@ -41,7 +41,8 @@ class Member(db.Model):
     mid = db.Column(db.String(5), primary_key=True)
     name = db.Column(db.String(8), unique=True, nullable=False)
     birthday = db.Column(db.Date)
-    phone = db.Column(db.String(50))
+    phone = db.Column(db.String(50), nullable=False)
+    address = db.Column(db.String(50))
     email = db.Column(db.String(50), nullable=False)
     role_id=db.Column(db.Integer, db.ForeignKey('role.id'))
     accounts=db.relationship('Account',backref='member',uselist=False)
@@ -226,7 +227,7 @@ def join():
             phone = regform.phone.data
             address = regform.address.data
             email = regform.email.data
-            conn = get_db_connection()
+            '''conn = get_db_connection()
             cursor = conn.cursor()
             SQL = "SELECT COUNT(*) FROM member"
             cursor.execute(SQL)
@@ -243,7 +244,17 @@ def join():
             cursor.execute(SQL3)
             conn.commit()
             cursor.close()
-            conn.close()
+            conn.close()'''
+            count = len(Member.query.all())
+            mid = 'm' + str(count + 1).zfill(4)
+            md = hashlib.md5()
+            md.update(userpass.encode('utf-8'))
+            userpass = md.hexdigest()
+            member_user = Member(mid=mid, name=name, birthday birthday, phone=phone, address=address, email=email)
+            account_user = Account (username=username, userpass=userpass, mid=mid)
+            db.session.add(member_user)
+            db.session.add(account_user)
+            db.session.commit()
         return redirect(url_for('signin'))
 
 
