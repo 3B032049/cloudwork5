@@ -1,4 +1,4 @@
-host = 'dpg-cojk7o8cmk4c73bst0n0-a.singapore-postgres.render.com'
-database = 'smarthome_b23q'
-user = 'admin'
-password = 'ZcZBH2wWJBvlh2MrlrnGdt8lRTlYyA1r'
+host = 'dpg-cpjf8qi1hbls73bvian0-a.singapore-postgres.render.com'
+database = 'cloudwork5'
+user = 'cloudwork5_user'
+password = 'iTj6mUzuzd1PnqXdbBOWHOC7xo7DIc7L'
