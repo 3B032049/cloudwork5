@@ -3,23 +3,11 @@
 {% block content %}
 <div class="btn-group">
     <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Apple</button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">iPhone</a></li>
-            <li><a class="dropdown-item" href="#">iPad</a></li>
-            <li><a class="dropdown-item" href="#">iPad Air</a></li>
-        </ul>
-        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Samsung</button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Home Appliances</a></li>
-            <li><a class="dropdown-item" href="#">Mobile Device</a></li>
-            <li><a class="dropdown-item" href="#">SmartThings</a></li>
-        </ul>
-        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Sony</button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Tablet</a></li>
-            <li><a class="dropdown-item" href="#">Smartphone</a></li>
-        </ul>
+        <img src="{{ url_for('static', filename='img/fruit.jpg') }}" width="50" height="50"
+             alt="CJSHS Smart Health" />
+            <div>
+                日本長野縣 妃紅提葡萄 單房
+            </div>
     </div>
 </div>
 {% endblock %}
