@@ -197,11 +197,11 @@ def forgot():
     return 'Pass'
 @app.route('/product')
 def product():
-    return 'Pass'
+    return render_template("member/product.html")
 
 @app.route('/aboutus')
 def aboutus():
-    return 'Pass'
+    return render_template("member/aboutus.html")
 @app.route('/contactus')
 def contactus():
     return 'Pass'
